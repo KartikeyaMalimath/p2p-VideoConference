@@ -15,8 +15,8 @@
   "author": "Kartikeya Malimath",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "pusher": "^2.2.0"
   },
   "devDependencies": {},
@@ -24,7 +24,6 @@
     "type": "git",
     "url": "git+https://github.com/KartikeyaMalimath/p2p-VideoConference.git"
   },
-  
   "bugs": {
     "url": "https://github.com/KartikeyaMalimath/p2p-VideoConference/issues"
   },
