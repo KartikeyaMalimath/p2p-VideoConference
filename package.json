@@ -17,5 +17,14 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "pusher": "^2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KartikeyaMalimath/p2p-VideoConference.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KartikeyaMalimath/p2p-VideoConference/issues"
+  },
+  "homepage": "https://github.com/KartikeyaMalimath/p2p-VideoConference#readme"
 }
