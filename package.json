@@ -4,6 +4,7 @@
   "description": "Build a video call application using webrtc and Pusher",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,6 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/KartikeyaMalimath/p2p-VideoConference.git"
   },
+  
   "bugs": {
     "url": "https://github.com/KartikeyaMalimath/p2p-VideoConference/issues"
   },
