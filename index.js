@@ -32,7 +32,7 @@ app.post('/pusher/auth', (req, res) => {
             user_id: Math.random().toString(36).slice(2) + Date.now()
         }
         const auth = pusher.authenticate(socketId, channel, presenceData);
-        res.send(auth);
+        res.send(auth );
 });
 
 //listen on the app
