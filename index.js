@@ -37,5 +37,5 @@ app.post('/pusher/auth', (req, res) => {
 
 //listen on the app
 app.listen(process.env.PORT || 5000, () => {
-    return console.log('Server is up on 3000')
+    return console.log('Server is up on 5000')
 });
