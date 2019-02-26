@@ -2,6 +2,8 @@
 <html>
 
 <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>WebRTC Audio/Video-Chat</title>
 </head>
 
@@ -10,7 +12,7 @@
         <span id="myid"> </span>
         <video id="selfview" autoplay></video>
         <video id="remoteview" autoplay></video>
-        <button id="endCall" style="display: none;" onclick="endCurrentCall()">End Call </button>
+        <button id="endCall" style="display: none;" class="btn btn-dark" onclick="endCurrentCall()">End Call </button>
         <div id="list">
             <ul id="users">
 
@@ -64,7 +66,7 @@
     function render() {
         var list = '';
         users.forEach(function(user) {
-            list += `<li>` + user + ` <input type="button" style="float:right;"  value="Call" onclick="callUser('` + user + `')" id="makeCall" /></li>`
+            list += `<li>` + user + ` <input type="button" class="btn btn-outline-success" style="float:right;"  value="Call" onclick="callUser('` + user + `')" id="makeCall" /></li>`
         })
         document.getElementById('users').innerHTML = list;
     }
@@ -285,6 +287,12 @@
     
     #list ul {
         list-style: none;
+        border: 1px solid #000;
+        margin: 1rem;
+        width: 35rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
     }
     
     #list ul li {
@@ -293,20 +301,16 @@
         display: block;
         width: 300px;
         height: 28px;
-        background-color: #333;
-        border-left: 5px solid #222;
-        border-right: 5px solid #222;
+        /* background-color: #e9e9e9; */
+        /* border-left: 5px solid #222;
+        border-right: 5px solid #222; */
+        margin-bottom: 1rem;
         padding-left: 10px;
+        padding: 10px;
         text-decoration: none;
-        color: #bfe1f1;
+        color: #303030;
     }
-    
-    #list ul li:hover {
-        -moz-transform: rotate(-5deg);
-        -moz-box-shadow: 10px 10px 20px #000000;
-        -webkit-transform: rotate(-5deg);
-        -webkit-box-shadow: 10px 10px 20px #000000;
-        transform: rotate(-5deg);
-        box-shadow: 10px 10px 20px #000000;
-    }
+
+   
+
 </style>
