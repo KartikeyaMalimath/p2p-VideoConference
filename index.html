@@ -91,15 +91,13 @@
             if (window.URL) {
                 //document.getElementById("remoteview").src = window.URL.createObjectURL(evt.stream);
                 //document.getElementById("remoteview").srcObject = evt.stream;
-                var video = document.createElement('video');
-                video.srcObject = evt.stream;
-                video.autoplay = true;
+                document.createElement('video').srcObject = evt.stream;
             } else {
                 //document.getElementById("remoteview").src = evt.stream;
                 //document.getElementById("remoteview").srcObject = evt.stream;
-                var video = document.createElement('video');
-                video.srcObject = evt.stream;
-                video.autoplay = true;
+                document.createElement('video').srcObject = evt.stream;
+                
+                
             }
         };
     }
