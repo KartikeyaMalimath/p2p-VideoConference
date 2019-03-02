@@ -11,7 +11,7 @@
     <div id="app">
         <span id="myid"> </span>
         <video id="selfview" autoplay></video>
-        <!--<video id="remoteview" autoplay></video>-->
+        <video id="remoteview" autoplay></video>
         <button id="endCall" style="display: none;" class="btn btn-dark" onclick="endCurrentCall()">End Call </button>
         <div id="list">
             <ul id="users">
@@ -90,12 +90,12 @@
             console.log("onaddstream called");
             if (window.URL) {
                 //document.getElementById("remoteview").src = window.URL.createObjectURL(evt.stream);
-                //document.getElementById("remoteview").srcObject = evt.stream;
-                document.createElement('video').srcObject = evt.stream;
+                document.getElementById("remoteview").srcObject = evt.stream;
+                //document.createElement('video').srcObject = evt.stream;
             } else {
                 //document.getElementById("remoteview").src = evt.stream;
-                //document.getElementById("remoteview").srcObject = evt.stream;
-                document.createElement('video').srcObject = evt.stream;
+                document.getElementById("remoteview").srcObject = evt.stream;
+                //document.createElement('video').srcObject = evt.stream;
                 
                 
             }
