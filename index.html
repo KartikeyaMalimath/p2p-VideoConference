@@ -86,6 +86,7 @@
             onIceCandidate(caller, evt);
         };
         //onaddstream handler to receive remote feed and show in remoteview video element
+        setTimeout(function(){console.log('timer')},10000);
         caller.onaddstream = function(evt) {
             console.log("onaddstream called");
             if (window.URL) {
