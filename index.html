@@ -4,13 +4,18 @@
 <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>WebRTC Audio/Video-Chat</title>
+    <title>Star Tech Troopers | SIH-2019</title>
 </head>
 
 <body>
     <div id="app">
         <span id="myid"> </span>
-        <video id="selfview" autoplay></video>
+        <div class="remote" id="remoteview">
+            <!--dynamic video tag comes here-->
+        </div>
+        <div class="self">
+            <video id="selfview" autoplay></video>
+        </div>
             <script>var vid = document.getElementById("selfview");
                 vid.muted = true;
             </script>
@@ -95,14 +100,14 @@
                 var incoming = document.createElement('video');
                 incoming.srcObject = evt.stream;
                 incoming.autoplay=true;
-                document.getElementById('app').appendChild(incoming);  
+                document.getElementById('remoteview').appendChild(incoming);  
             } else {
                 //document.getElementById("remoteview").src = evt.stream;
                 //document.getElementById("remoteview").srcObject = evt.stream;
                 var incoming=document.createElement('video');
                 incoming.srcObject = evt.stream;
                 incoming.autoplay=true;  
-                document.getElementById('app').appendChild(incoming);              
+                document.getElementById('remoteview').appendChild(incoming);              
             }
         };
     }
@@ -296,6 +301,8 @@
 <style>
     video {
         /* video border */
+        width: fill;
+        height: fill;
         border: 1px solid #ccc;
         padding: 20px;
         margin: 10px;
