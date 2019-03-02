@@ -11,6 +11,9 @@
     <div id="app">
         <span id="myid"> </span>
         <video id="selfview" autoplay></video>
+            <script>var vid = document.getElementById("selfview");
+                vid.muted = true;
+            </script>
         <!--<video id="remoteview" autoplay></video>-->
         <button id="endCall" style="display: none;" class="btn btn-dark" onclick="endCurrentCall()">End Call </button>
         <div id="list">
@@ -106,8 +109,10 @@
     function getCam() {
         //Get local audio/video feed and show it in selfview video element 
         return navigator.mediaDevices.getUserMedia({
-            video: true,
-            audio: true
+            video: {width: {min: 426, ideal:1280, max:1920},
+                    height: {min: 240, ideal: 720, max:1080}},
+            audio: true,
+            mimeType : "video/webm;codecs=Opus"
         });
     }
 
