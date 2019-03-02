@@ -21,7 +21,8 @@
 
             </ul>
         </div>
-    
+    </div>
+
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script>
     var pusher = new Pusher('0404486f2460041495bc', {
@@ -86,7 +87,6 @@
             onIceCandidate(caller, evt);
         };
         //onaddstream handler to receive remote feed and show in remoteview video element
-        setTimeout(function(){console.log('timer')},10000);
         caller.onaddstream = function(evt) {
             console.log("onaddstream called");
             if (window.URL) {
@@ -111,8 +111,12 @@
         //Get local audio/video feed and show it in selfview video element 
         return navigator.mediaDevices.getUserMedia({
             video: {width: {min: 426, ideal:1280, max:1920},
-                    height: {min: 240, ideal: 720, max:1080}},
-            audio: true,
+                    height: {min: 240, ideal: 720, max:1080},
+                    frameRate: { min:15, ideal: 20, max: 30 }
+                    },
+            audio: {autoGainControl: true,
+                echoCancellation: true,
+                noiseSuppression: true},
             mimeType : "video/webm;codecs=Opus"
         });
     }
@@ -206,9 +210,16 @@
 
     //Listening for the candidate message from a peer sent from onicecandidate handler
     channel.bind("client-candidate", function(msg) {
+        console.log(msg)
         if(msg.room==room){
             console.log("candidate received");
-            caller.addIceCandidate(new RTCIceCandidate(msg.candidate));
+            var candidate = new RTCIceCandidate(msg.candidate);
+            caller.addIceCandidate(candidate)
+                .then(function() {
+                    console.log('ice success');
+                }).catch(error => {
+                    console.log('Ice error'+error);
+                });
         }
     });
 
@@ -326,3 +337,7 @@
    
 
 </style>
+
+</body>
+</html>
+    
