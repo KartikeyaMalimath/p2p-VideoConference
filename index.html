@@ -13,7 +13,9 @@
         <div id="remoteview">
             <!--dynamic video tag comes here-->
         </div>
+        
             <video id="selfview" autoplay></video>
+        
             <script>var vid = document.getElementById("selfview");
                 vid.muted = true;
             </script>
@@ -120,7 +122,8 @@
             audio: {autoGainControl: true,
                 echoCancellation: true,
                 noiseSuppression: true},
-            mimeType : "video/webm;codecs=Opus"
+            mimeType : "audio/weba; codecs=Opus",
+            mimeType : "video/webm;codecs=vp9"
         });
     }
 
