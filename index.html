@@ -62,7 +62,6 @@ Author: Kartikeya P. Malimath
 <body>
         
     <div id="app">
-        <div id="idName"></div>
         
         <div id="remote">
             <video class="video1" id="remoteview" autoplay></video>
@@ -86,12 +85,6 @@ Author: Kartikeya P. Malimath
                 document.getElementById("main").style.marginLeft= "0";
                 document.body.style.backgroundColor = "white";
                 }
-                var nameId = prompt("Enter your name", "<Enter here>");
-                    if (nameId!= null) {
-                    document.getElementById("idName").innerHTML =
-                    "Hello " + nameId + "! How are you today?";
-                }
-
 
             </script>
         <!---->
@@ -126,10 +119,10 @@ Author: Kartikeya P. Malimath
         //set the member count
         usersOnline = members.count;
         id = channel.members.me.id;
-        document.getElementById('myid').innerHTML = `&nbsp&nbsp&nbsp&nbsp My ID : ` + nameId +`<br><hr style="height:20px; fill-color:#000000;">`;
+        document.getElementById('myid').innerHTML = `&nbsp&nbsp&nbsp&nbsp My ID : ` + id +`<br><hr style="height:20px; fill-color:#000000;">`;
         members.each((member) => {
             if (member.id != channel.members.me.id) {
-                users.push(member.nameId)
+                users.push(member.id)
             }
         });
 
@@ -137,7 +130,7 @@ Author: Kartikeya P. Malimath
     })
 
     channel.bind('pusher:member_added', (member) => {
-        users.push(member.nameId)
+        users.push(member.id)
         render();
     });
 
