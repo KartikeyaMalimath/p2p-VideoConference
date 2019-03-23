@@ -1,32 +1,107 @@
 <!DOCTYPE html>
 <html>
-
+<!--===============================
+Author: Kartikeya P. Malimath
+=================================-->
 <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+        <meta name="viewport" http-equiv="content-type" content="width=device-width, initial-scale=1, maximum-scale=1 text/html, charset=utf-8"/>
     <title>Star Tech Troopers | SIH-2019</title>
 </head>
 
+<style>
+.logo{
+    background-image: url("http://ehealth.eletsonline.com/wp-content/uploads/2015/01/Apollo_Hospitals.png"); 
+    background-repeat: no-repeat;
+    width: inherit;
+    height: 250px;
+}
+
+
+.video1{
+    margin-left: 90px;
+    width:1280px; 
+    height: 700px; 
+    position: relative;
+}
+.video2 {
+    float: right;
+    position: absolute;
+    left:970px;
+    top:490px;
+}
+.video3{
+    width:360px;
+    height:210px; 
+    position: absolute;
+}
+@media screen and (max-width: 650px) {
+    .video1{
+        margin-left: 0%;
+        left:0px;
+        width: 100%;
+        height: 90%;
+        position: relative;
+    }
+    .video2{ 
+        position: absolute;
+        left: 0px;
+        top:490px;
+    }
+    .video3{
+        position: absolute;
+        width: 180px;
+        height:350px;
+    }
+
+}
+
+</style>
+
+
 <body>
+        
     <div id="app">
-        <span id="myid"> </span>
-        <div id="remoteview">
-            <!--dynamic video tag comes here-->
+        
+        <div id="remote">
+            <video class="video1" id="remoteview" autoplay></video>
         </div>
+        <span style="font-size:30px;cursor:pointer; color: aliceblue; position: absolute; left: 20px; top:20px;" onclick="openNav()">&#9776;</span>
         
-            <video id="selfview" autoplay></video>
-        
+            <div class="video2">
+                <video class="video3"id="selfview" autoplay></video>
+            </div>
             <script>var vid = document.getElementById("selfview");
                 vid.muted = true;
-            </script>
-        <!--<video id="remoteview" autoplay></video>-->
-        <button id="endCall" style="display: none;" class="btn btn-dark" onclick="endCurrentCall()">End Call </button>
-        <div id="list">
-            <ul id="users">
 
-            </ul>
+                function openNav() {
+                document.getElementById("mySidenav").style.width = "400px";
+                document.getElementById("main").style.marginLeft = "400px";
+                document.body.style.backgroundColor = "rgba(0,0,0,1)";
+                }
+                
+                function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.body.style.backgroundColor = "white";
+                }
+
+            </script>
+        <!---->
+        <button id="endCall" style="display: none;" class="btn btn-dark" onclick="endCurrentCall()">End Call </button>
+        
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="logo"></div>
+            <span id="myid"> </span>
+            
+            <div id="list">
+                <ul id="users"> </ul>
+            </div>
         </div>
     </div>
+
+<!--Script for peer-->
 
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script>
@@ -44,7 +119,7 @@
         //set the member count
         usersOnline = members.count;
         id = channel.members.me.id;
-        document.getElementById('myid').innerHTML = ` My caller id is : ` + id;
+        document.getElementById('myid').innerHTML = `&nbsp&nbsp&nbsp&nbsp My ID : ` + id +`<br><hr style="height:20px; fill-color:#000000;">`;
         members.each((member) => {
             if (member.id != channel.members.me.id) {
                 users.push(member.id)
@@ -72,7 +147,7 @@
     function render() {
         var list = '';
         users.forEach(function(user) {
-            list += `<li>` + user + ` <input type="button" class="btn btn-outline-success" style="float:right;"  value="Call" onclick="callUser('` + user + `')" id="makeCall" /></li>`
+            list += `<li>` + user +`&nbsp&nbsp&nbsp <input type="button" class="btn btn-outline-success" style=" position: absolute;"  value="Call" onclick="callUser('` + user + `')" id="makeCall" /></li><hr>`
         })
         document.getElementById('users').innerHTML = list;
     }
@@ -96,18 +171,18 @@
             console.log("onaddstream called");
             if (window.URL) {
                 //document.getElementById("remoteview").src = window.URL.createObjectURL(evt.stream);
-                //document.getElementById("remoteview").srcObject = evt.stream;
-                var incoming = document.createElement('video');
-                incoming.srcObject = evt.stream;
-                incoming.autoplay=true;
-                document.getElementById('remoteview').appendChild(incoming);  
+                document.getElementById("remoteview").srcObject = evt.stream;
+                //var incoming = document.createElement('video');
+                //incoming.srcObject = evt.stream;
+                //incoming.autoplay=true;
+                //document.getElementById('remoteview').appendChild(incoming);  
             } else {
                 //document.getElementById("remoteview").src = evt.stream;
-                //document.getElementById("remoteview").srcObject = evt.stream;
-                var incoming=document.createElement('video');
-                incoming.srcObject = evt.stream;
-                incoming.autoplay=true;  
-                document.getElementById('remoteview').appendChild(incoming);              
+                document.getElementById("remoteview").srcObject = evt.stream;
+                //var incoming=document.createElement('video');
+                //incoming.srcObject = evt.stream;
+                //incoming.autoplay=true;  
+                //document.getElementById('remoteview').appendChild(incoming);              
             }
         };
     }
@@ -300,12 +375,32 @@
     
 </script>
 <style>
+
+    body {
+        font-family: "Lato", sans-serif;
+        background-color: #696969;
+        
+        margin: 0;
+        overflow: hidden;
+
+        padding: 10px;
+
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+
+        min-height: 100%;
+        height: 100%;
+        max-height: 100%;
+
+
+    }
+
     video {
         /* video border */
-        border: 1px solid #ccc;
-        padding: 20px;
-        margin: 10px;
+        border: 5px solid #000000;
         border-radius: 20px;
+        margin-left:40px;
         /* tranzitionstransitions applied to the vodeovideo element */
         -moz-transition: all 1s ease-in-out;
         -webkit-transition: all 1s ease-in-out;
@@ -316,9 +411,8 @@
     
     #list ul {
         list-style: none;
-        border: 1px solid #000;
-        margin: 1rem;
-        width: 35rem;
+        border: 1px, #000000;
+        width: fit-content;
         padding-top: 1rem;
         padding-bottom: 1rem;
 
@@ -337,8 +431,52 @@
         padding-left: 10px;
         padding: 10px;
         text-decoration: none;
-        color: #303030;
+        color: #ffffff;
     }
+
+    .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    color: azure;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
 
    
 
