@@ -30,8 +30,8 @@
 
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script>
-    var pusher = new Pusher('0404486f2460041495bc', {
-        cluster: 'ap2',
+    var pusher = new Pusher('PUSHER_API_KEY', {
+        cluster: 'PUSHER_API_CLUSTER',
         encrypted: true,
         authEndpoint: 'pusher/auth'
     });
@@ -123,7 +123,7 @@
                 echoCancellation: true,
                 noiseSuppression: true},
             mimeType : "audio/weba; codecs=Opus",
-            mimeType : "video/webm;codecs=vp9"
+            mimeType : "video/webm;codecs=vp8"
         });
     }
 

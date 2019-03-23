@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Create an instance of Pusher
 const pusher = new Pusher({
-    appId: '721837',
-    key: '0404486f2460041495bc',
-    secret: '5fd2909f1f2140e288cb',
-    cluster: 'ap2',
+    appId: 'PUSHER_APP_ID',
+    key: 'PUSHER_KEY',
+    secret: 'PUSHER_SALT',
+    cluster: 'PUSHER_CLUSTER',
     encrypted: true
 });
 
